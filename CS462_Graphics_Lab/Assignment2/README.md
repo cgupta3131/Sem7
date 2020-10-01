@@ -8,7 +8,7 @@ Follow the following steps to successfully run the program:
 - Run make clean to delete 'out' file.
 
 To Rotate the Model:
-- Hold the mouse left button and move the cursor.
+- Hold the mouse left button and move the cursor in all four directions to rotate the 3D Model.
 
 To Zoom the Model:
 - Hold the mouse right button and move/draw the cursor in up or down direction to zoom in/out respectively.
