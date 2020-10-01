@@ -6,3 +6,9 @@ Follow the following steps to successfully run the program:
 - A new file 'out' would be created.
 - Run the command './out' on the terminal. You will immediately see a screen pop with the desired result. To close the window, press ESC.
 - Run make clean to delete 'out' file.
+
+To Rotate the Model:
+- Hold the mouse left button and move the cursor.
+
+To Zoom the Model:
+- Hold the mouse right button and move/draw the cursor in up or down direction to zoom in/out respectively.

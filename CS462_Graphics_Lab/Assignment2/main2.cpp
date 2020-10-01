@@ -75,7 +75,6 @@ void drawWireFrame()
 
 void MouseCallback(int button, int state, int x, int y) {
 
-	cout << x << " " << y << endl;
   	downX = x; downY = y;
 
   	leftButton = ((button == GLUT_LEFT_BUTTON) && (state == GLUT_DOWN));
@@ -112,7 +111,7 @@ void display()
 
 	glTranslatef(0.0, 0.0, sdepth);
 	glRotatef(-stheta, 1.0, 0.0, 0.0);
-    glRotatef(sphi, 0.0, 0.0, 1.0);
+    glRotatef(sphi, 0.0, 1.0, 0.0);
 	glPushMatrix();
 	glTranslated(1.0f, -3.0f, 0.0f);
 	glScaled(20.0f, 20.0f, 20.0f);
