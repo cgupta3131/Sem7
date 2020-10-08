@@ -104,12 +104,11 @@ class EvaluationSystem
 
     private void updateAllMarks() 
     {
-        Instructor ta1 = new Instructor(this, Thread.NORM_PRIORITY) ; 
-        Instructor ta2 = new Instructor(this, Thread.NORM_PRIORITY) ; 
+        Instructor ta1 = new Instructor(this, Thread.MIN_PRIORITY) ; 
+        Instructor ta2 = new Instructor(this, Thread.MIN_PRIORITY) ; 
         Instructor instructor = new Instructor(this, Thread.MAX_PRIORITY) ; 
 
-        for(InputEntry entry: inputBuffer)
-        {
+        for(InputEntry entry: inputBuffer) {
             if(entry.teacher.equals(Constants.TA1))
                 ta1.addInput(entry);
             else if(entry.teacher.equals(Constants.TA2))
@@ -120,18 +119,21 @@ class EvaluationSystem
 
         inputBuffer.clear();
 
-        ta1.start(); 
-        ta2.start() ; 
         instructor.start() ; 
-        
-        try
-        {
+        try {
             instructor.join();
-            ta1.join() ; 
-            ta2.join() ; 
+            ta1.start();
+            ta2.start();
+            try {
+                ta1.join();
+                ta2.join();
+
+            }
+            catch(Exception e) {
+                e.printStackTrace() ;
+            }
         }
-        catch(Exception e)
-        {
+        catch(Exception e) {
             e.printStackTrace() ;
         }
 
@@ -141,44 +143,44 @@ class EvaluationSystem
 
     private void takeInputFromUser() 
     {
-        String teacher = getTeacherDetails() ;
-        String rollNum = getRollDetails() ; 
-        String updateMarks = getMarksDetails() ;  
+        System.out.println("{Teacher Alias} {Student Roll No.} {Marks to increase/decrease(Put - if you want to decrease)}");
+        String teacher = scanner.next();
+        String rollNum = scanner.next();
+        String updateMarks = Integer.toString(scanner.nextInt());
+
+        if(!isValidTeacherDetails(teacher))
+        {
+            takeInputFromUser();
+            return;
+        }
+
+        if(!isValidRollDetails(rollNum))
+        {
+            takeInputFromUser();
+            return;
+        }
 
         inputBuffer.add(new InputEntry(teacher, rollNum, updateMarks));
     }
 
-    private String getMarksDetails() 
+    private boolean isValidTeacherDetails(String teacher)
     {
-        System.out.println("How many marks you want to increase/decrease(Input -ve if you want to decrease)?");
-        String s = Integer.toString(scanner.nextInt()) ; 
-        return s ; 
+        if(teacher.equals(Constants.CC) || teacher.equals(Constants.TA2) || teacher.equals(Constants.TA1))
+            return true; 
+        System.out.println("Invalid Instructor's details, Please Try Again");
+        return false;
     }
 
-    private String getRollDetails() 
+    private boolean isValidRollDetails(String rollNum)
     {
-        System.out.println("Enter Roll Number :- ") ;
-        String s = scanner.next() ;
-
         for(Student st: studentData)
         {
-            if(st.rollNo.equals(s))
-                return s;
+            if(st.rollNo.equals(rollNum))
+                return true;
         }
-        
+
         System.out.println("Roll Number does not exists, Pleae Try Again");
-        return getRollDetails() ; 
+        return false;
     }
-
-    private String getTeacherDetails() 
-    {
-        System.out.println("Enter Instructor's Alias: ");
-        String s = scanner.next() ; 
-
-        if(s.equals(Constants.CC) || s.equals(Constants.TA2) || s.equals(Constants.TA1))
-            return s ; 
-
-        System.out.println("Invalid Instructor's details, Please Try Again");
-        return getTeacherDetails() ; 
-    }
+    
 }
