@@ -2,8 +2,10 @@ package calc1;
 
 import javax.swing.JPanel;
 import javax.swing.JButton;
-
+import javax.swing.border.*;
+import javax.swing.BorderFactory;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
@@ -28,14 +30,36 @@ public class NumberArea
         return nPanel;
     }
 
+    /**
+     * Sets the border for the button
+     */
+    void setBorder(JButton btn)
+    {
+        Border line = new LineBorder(Color.BLACK);
+        Border margin = new EmptyBorder(5, 15, 5, 15);
+        Border compound = new CompoundBorder(line, margin);
+        btn.setBorder(compound);
+    }
+
+    /**
+     * Adds a new button with text as 'i'.
+     * Also sets the background and font of that particular button
+     * Sets the border and pushes into the list of Number Keys
+     */
     void addNewButton(int i)
     {
         JButton numberKey = new JButton(Integer.toString(i));
         numberKey.setBackground(Color.YELLOW);
         numberKey.setOpaque(false);
+        numberKey.setFont(new Font("Monospaced", Font.BOLD, 20));
+        setBorder(numberKey);
         listOfNumberKeys.add(numberKey);
     }
 
+    /**
+     * Initiates the UI for numberPanel and sets it's size and location.
+     * Adds all the 10 buttons (0-9) on the numberPanel
+     */
     private void initiateUserInterface()
     {
         GridLayout layout = new GridLayout(4, 3);

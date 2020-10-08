@@ -18,6 +18,12 @@ class EvaluationSystem
         rollLocks = new HashMap<>(); 
     }
 
+    /**
+     * Updates the marks of the student in the shared database studentData
+     * @param rollNumber : RollNumber of student whose marks needs to be updated
+     * @param marksDelta : Delta in marks (+ve or -ve)
+     * @param updater : Designation of the teacher who is updating the marks
+     */
     public void updateDataOfStudent(String rollNumber, int marksDelta, String updater) throws Exception
     {
         if(!rollLocks.containsKey(rollNumber))
@@ -63,6 +69,11 @@ class EvaluationSystem
         return null ; 
     }
 
+    /**
+     * adds a new entry from stud_info.txt into our arrayList studentData.
+     * Also gives a new lock for each different roll no.
+     * @param currentData -> single line data from the stud_info.txt
+     */
     private void addNewEntry(String [] currentData)
     {
         studentData.add(new Student(currentData[0], currentData[1], currentData[2], currentData[3], currentData[4]));
@@ -102,6 +113,9 @@ class EvaluationSystem
 
     }
 
+    /**
+     * Updates all the marks and generates three files: Sorted by Roll, Sorted by Name and UnSorted
+     */
     private void updateAllMarks() 
     {
         Instructor ta1 = new Instructor(this, Thread.MIN_PRIORITY) ; 
@@ -141,6 +155,11 @@ class EvaluationSystem
         fg.generateAllFiles(); 
     }
 
+    /**
+     * Helps to take and verify the input taken from the user.
+     * If the input is wrong, the user is shown a message and asked to re-enter the details
+     * And if the input is current, it is added into the inputBuffer
+     */
     private void takeInputFromUser() 
     {
         System.out.println("{Teacher Alias} {Student Roll No.} {Marks to increase/decrease(Put - if you want to decrease)}");
@@ -163,6 +182,10 @@ class EvaluationSystem
         inputBuffer.add(new InputEntry(teacher, rollNum, updateMarks));
     }
 
+    /**
+     * @param teacher : Designation of the teacher which needs to be validated
+     * @return : Tells if the teacher details are valid or not
+     */
     private boolean isValidTeacherDetails(String teacher)
     {
         if(teacher.equals(Constants.CC) || teacher.equals(Constants.TA2) || teacher.equals(Constants.TA1))
@@ -171,6 +194,10 @@ class EvaluationSystem
         return false;
     }
 
+    /**
+     * @param rollNum: Roll Number of the student whose marks needs to be updated and validated
+     * @return : Tells if the roll number details are valid or not.
+     */
     private boolean isValidRollDetails(String rollNum)
     {
         for(Student st: studentData)

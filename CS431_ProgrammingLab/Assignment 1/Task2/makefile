@@ -1,4 +1,4 @@
-OUTFILES=./AllData/Sorted_Name.txt ./AllData/Sorted_Roll.txt ./AllData/UnSorted.txt
+OUTFILES=Sorted_Name.txt Sorted_Roll.txt UnSorted.txt
 PACKAGE_NAME=evalsystem
 
 all: $(SRCS)

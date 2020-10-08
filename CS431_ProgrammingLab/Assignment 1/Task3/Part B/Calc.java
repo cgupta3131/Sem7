@@ -21,6 +21,10 @@ public class Calc extends JFrame implements KeyListener
         fScanner = new FunctionScanner(this);
     }
 
+    /**
+     * Creates the UI for the calculator
+     * Sets the size and addes the displayTextField, NumberPanel, FunctionPanel and InfoTextField
+     */
     private void createUI()
     {
         this.setSize(Constants.WIDTH, Constants.HEIGHT);
@@ -53,6 +57,13 @@ public class Calc extends JFrame implements KeyListener
         fScanner.execute();
     }
 
+    /**
+     * Key press event based on the current Key presses 'e'
+     * If enter is pressed, we need to get the number on which current highlighter was and append it to displayField.
+     * If SpaceBar is pressed, we need to get the operand on which the current highlihter was and append it to displayField.
+     * If key E is pressed, we need to evaluate the whole expression present on the DisplayField currently.
+     * If key C is press, we need to clear the DisplayField completely.
+     */
     public void keyPressed(KeyEvent e)
     {
         if(e.getKeyCode() == KeyEvent.VK_ENTER) //add a new digit to the dArea

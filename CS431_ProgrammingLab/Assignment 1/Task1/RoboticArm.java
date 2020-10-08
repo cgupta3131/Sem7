@@ -15,6 +15,9 @@ public class RoboticArm extends Thread {
         matchingMachine = m;
     }
 
+    /**
+     * The particular Robotic Arm tries to pich the socks from the heap and if it is able to pick, it adds it to matchingMachine.
+     */
     @Override
     public void run() {
 

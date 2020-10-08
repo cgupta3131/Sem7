@@ -10,6 +10,9 @@ class SockMatchingRoom {
     public static int numRobots;
     public static int totalPairs;
 
+    /**
+     * gets the List of Socks with all the white, black, blue and grey socks in number as mentioned by the user.
+     */
     private static List<Sock> getList()
     {
         List<Sock> allSocks = new ArrayList<>();
@@ -50,6 +53,7 @@ class SockMatchingRoom {
         return allSocks;
     }
 
+    
     public static void main(String[] args)
     {
         if(args.length < 5)

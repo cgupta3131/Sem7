@@ -14,6 +14,11 @@ public class HeapOfSocks {
         remainingSocks = s.size();
     }
 
+    /**
+     * Selects a particular sock(top of the heap) and checks if that particular sock is pickable(success = true)
+     * If it is, then we remove the sock from the heap(increase pointer) and decrease remainingSocks count. All this is done in a synchronous manner
+     * @return
+     */
     public Sock selectFromHeap()
     {
         Sock s = socks.get(curIdx);
@@ -32,6 +37,9 @@ public class HeapOfSocks {
             return null;
     }
 
+    /**
+     * Returns the count of remaining socks
+     */
     public int remainingSocks()
     {
         return remainingSocks;

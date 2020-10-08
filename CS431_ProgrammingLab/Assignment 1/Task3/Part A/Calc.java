@@ -1,6 +1,8 @@
 package calc1;
 
 import javax.swing.JFrame;
+
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -20,11 +22,14 @@ public class Calc extends JFrame implements KeyListener
         scanner = new Scanner(this);
     }
 
+    /**
+     * Creates the UI for the calculator
+     * Sets the size and addes the displayTextField, NumberPanel, FunctionPanel and InfoTextField
+     */
     private void createUI()
     {
         this.setSize(Constants.WIDTH, Constants.HEIGHT);
         this.getContentPane().setLayout(null);
-
         dArea = new DisplayArea();
         this.add(dArea.getDisplayField());
         
@@ -51,6 +56,12 @@ public class Calc extends JFrame implements KeyListener
         scanner.execute();
     }
 
+    /**
+     * Key press event based on the current Key presses 'e'
+     * If enter is pressed we need to shift the higlighting from number panel to function panel or vice-versa.
+     * If key E is pressed, we need to evaluate the whole expression present on the DisplayField currently.
+     * If key C is press, we need to clear the DisplayField completely.
+     */
     public void keyPressed(KeyEvent e)
     {
         if(e.getKeyCode() == KeyEvent.VK_ENTER) //add a new digit to the dArea

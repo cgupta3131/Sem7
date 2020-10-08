@@ -20,6 +20,9 @@ public class FileGenerator {
         generateSortedNameFile();
     }
 
+    /**
+     * Used to add a new line in the current pointer writer with details of the Student st.
+     */
     private BufferedWriter addNewLIine(BufferedWriter writer, Student st)
     {
         try {
@@ -68,6 +71,9 @@ public class FileGenerator {
         }
     }
 
+    /**
+     * Generates the sorted by Roll No. File
+     */
     private void generateSortedRollFile() 
     {
         final Comparator<Student> RollComparator = new Comparator<Student>()
@@ -90,6 +96,9 @@ public class FileGenerator {
         }
     }
 
+    /**
+     * Generate a sorted by Name file.
+     */
     private void generateSortedNameFile() 
     {
         final Comparator<Student> NameComparator = new Comparator<Student>()
@@ -112,6 +121,9 @@ public class FileGenerator {
         }
     }
 
+    /**
+     * Generates an unsorted file.
+     */
     private void generateOutputFile() 
     {
         ArrayList<Student> cloneData = new ArrayList<Student>(studentData);

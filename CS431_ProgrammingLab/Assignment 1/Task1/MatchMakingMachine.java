@@ -13,6 +13,10 @@ public class MatchMakingMachine extends Thread {
         matchedPairs = 0;
     }
 
+    /**
+     * For each sock color, if the current count is greater than or equal to 2, we decrease the count and increase the matchedPair.
+     * Then the updated value is added into the map of matchedSocks.
+     */
     @Override
     public void run()
     {
@@ -38,6 +42,10 @@ public class MatchMakingMachine extends Thread {
         System.out.println("Total Matched Pair Sock Pairs: " + matchedPairs);
     }
 
+    /**
+     * Adds a sock into the matchedSocks Map and increases the count by 1
+     * @param s
+     */
     public synchronized void addSock(Sock s)
     {
         int newCount = 0;

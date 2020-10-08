@@ -18,14 +18,21 @@ public class InfoArea {
         return iField;
     }
 
+    /**
+     * Sets the font for the Information Text Field
+     */
     private void setFont()
     {
-        Font font = new Font("SansSerif", Font.PLAIN, 14);
+        Font font = new Font("SansSerif", Font.BOLD, 12);
         iField.setFont(font);
-        iField.setBackground(Color.WHITE);
+        iField.setBackground(Color.RED);
         iField.setHorizontalAlignment(JTextField.CENTER);
     }
     
+    /**
+     * Initates the UI for Info Text
+     * Sets the location and size
+     */
     private void initiateUserInterface()
     {
         iField = new JTextField("Press E to evaluate and C to clear the expression");

@@ -14,7 +14,7 @@ To run the program from file:
 
     java evalsystem/EvaluationSystem < ./Resources/input.txt
     
-- Whenver the input presses 2(UpdateAllData), we can see that three files will be generated in AllData directory.
+- Whenver the input presses 2(UpdateAllData), we can see that three files will be generated in the current directory.
 - SortedName.txt : Contains all the students and their marks sorted by their Name.
 - SortedRoll.txt : Contains all the students and their marks sorted by their Roll Number.
 - UnSorted.txt   : Contains all the students and their marks in unsorted manner.

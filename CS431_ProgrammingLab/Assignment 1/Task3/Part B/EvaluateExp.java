@@ -32,7 +32,10 @@ public class EvaluateExp {
         else if(op == '/')
         {
             if(b == 0)
-                throw new UnsupportedOperationException("Cannot divide by zero");
+            {
+                System.out.println("Division by Zero not allowed");
+                return 0;
+            }
             else
                 return a/b;
         }

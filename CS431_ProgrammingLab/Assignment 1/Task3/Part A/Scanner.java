@@ -33,6 +33,9 @@ public class Scanner extends SwingWorker
     }
 
 
+    /**
+     * Updates the currentNumber Button, that is it makes it to highlight for SLEEP_TIME and then unhighlights it again for next buttons to be highlighted
+     */
     boolean updateCurrentNumberButton(JButton curButton)
     {
         try
@@ -51,6 +54,9 @@ public class Scanner extends SwingWorker
         }
     }
 
+    /**
+     * Updates the currentFunction Button, that is it makes it to highlight for SLEEP_TIME and then unhighlights it again for next buttons to be highlighted
+     */
     boolean updateCurrentFunctionButton(JButton curButton)
     {
         if(curButton == null)

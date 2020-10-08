@@ -2,6 +2,10 @@ package calc1;
 
 import javax.swing.JPanel;
 import javax.swing.JButton;
+import javax.swing.border.*;
+import javax.swing.BorderFactory;
+import java.awt.Color;
+import java.awt.Font;
 import java.util.HashMap;  
 import java.util.Map;  
 
@@ -27,6 +31,9 @@ public class FunctionArea
         return fPanel;
     }
 
+    /**
+     * Returns a single button based on the ID provided.
+     */
     public JButton getSingleButton(int id)
     {
         if(id == 0)
@@ -41,13 +48,24 @@ public class FunctionArea
         return null;
     }    
 
+    /**
+     * Sets all the property of btn such as background, Borders and Font.
+     */
     JButton setProperty(JButton btn)
     {
-        btn.setBackground(Color.CYAN);
+        btn.setBackground(Color.GREEN);
+        Border line = new LineBorder(Color.BLACK);
+        Border margin = new EmptyBorder(5, 15, 5, 15);
+        Border compound = new CompoundBorder(line, margin);
+        btn.setBorder(compound);
         btn.setOpaque(false);
+        btn.setFont(new Font("Monospaced", Font.BOLD, 25));
         return btn;
     }
 
+    /**
+     * Adds all the buttons(operators) to the Function Panel
+     */
     void addAllButtons()
     {
         addKey = new JButton("+");
@@ -67,6 +85,10 @@ public class FunctionArea
         fPanel.add(divisionKey);
     }
 
+    /**
+     * Initiates the UI for functionPanel by setting the layout details.
+     * Also sets the location and size of the functionPanel.
+     */
     void initiateUserInterface()
     {
         GridLayout layout = new GridLayout(2, 3);

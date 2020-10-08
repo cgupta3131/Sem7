@@ -18,13 +18,22 @@ public class DisplayArea {
         return dField;
     }
 
+    /**
+     * Sets the font of the display Field.
+     * Also sets the background color.
+     */
     private void setFont()
     {
-        Font font = new Font("SansSerif", Font.PLAIN, 20);
+        Font font = new Font("Monospaced", Font.BOLD, 20);
         dField.setFont(font);
         dField.setBackground(Color.WHITE);
     }
 
+    /**
+     * Initate the UI for the displayField to be displayed.
+     * Sets location and font.
+     * Also sets the size of the JTextField that needs to be displated.
+     */
     private void initiateUserInterface()
     {
         dField = new JTextField("");
@@ -36,6 +45,16 @@ public class DisplayArea {
         dField.setSize(Constants.DISPLAY_FIELD_WIDTH, Constants.DISPLAY_FIELD_HEIGHT);
     }
 
+    private boolean isNumber(char c)
+    {
+        return (c >= '0' && c <= '9');
+    }
+
+    /**
+     * Validates that if the current expression in the dField is currect or not.
+     * This can be validated by checking if the last current is a number of not.
+     * @return
+     */
     private boolean validate()
     {
         String cur = dField.getText();
@@ -46,16 +65,14 @@ public class DisplayArea {
         }
 
         char lastCharacter = cur.charAt(lenField-1);
-        if(!(lastCharacter >= '0' && lastCharacter <= '9'))
+        if(!(isNumber(lastCharacter)))
             return false;
         return true;
     }
 
-    private boolean isNumber(char c)
-    {
-        return (c >= '0' && c <= '9');
-    }
-
+    /**
+     * Appends a new character c to the textField.
+     */
     public void appendChar(char c)
     {
         if(!isNumber(c)) //If any operand, then check for previous character in dField
@@ -77,11 +94,19 @@ public class DisplayArea {
         dField.setText(cur);
     }
 
+    /**
+     * Clears out the whole text from the dField
+     */
     public void clearText()
     {
         dField.setText("");
     }
 
+    /**
+     * Evaluates the expression on the JtextField.
+     * If it is correct, displays the final answer on the TextField.
+     * Else it will print out that Operation is not allowed.
+     */
     public void evaluate()
     {
         String expression = dField.getText();
