@@ -1,3 +1,5 @@
+package sockmatching;
+
 import java.util.*;
 
 public class HeapOfSocks {

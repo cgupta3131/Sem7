@@ -1,3 +1,5 @@
+package sockmatching;
+
 import java.util.*;
 
 public class MatchMakingMachine extends Thread {
@@ -24,7 +26,7 @@ public class MatchMakingMachine extends Thread {
                     while(currentCount >= 2)
                     {
                         currentCount -= 2;
-                        System.out.println("\t\tMachine matched a pair of socks of color: " + Constants.getColor(sockColor));
+                        System.out.println("\t\tMachine matched a pair of socks of color: " + Constants.getColor(sockColor) + " and pushed it to " + Constants.getColor(sockColor) + " shelf");
                         matchedPairs++;
                     }
 

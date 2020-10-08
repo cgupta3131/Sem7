@@ -4,7 +4,7 @@ Compile the Program by running:
 
 To run the program run:
 
-    java SockMatchingRoom {Number of Robot Arms} {White Sock Pairs} {Black Sock Pairs} {Blue Sock Pairs} {Grey Sock Pairs}
+    java sockmatching/SockMatchingRoom {Number of Robot Arms} {White Sock Pairs} {Black Sock Pairs} {Blue Sock Pairs} {Grey Sock Pairs}
 
 Clean the directory:
 

@@ -1,3 +1,5 @@
+package sockmatching;
+
 import java.util.*;
 
 public class RoboticArm extends Thread {
@@ -23,7 +25,7 @@ public class RoboticArm extends Thread {
                 if(s == null)
                     continue;
 
-                System.out.println("Sock #" + s.getIndex() + " of color " + Constants.getColor(s.getColor()) + " picked up by Arm #" + roboticArmIndex);
+                System.out.println("Arm " + roboticArmIndex + ": Sock #" + s.getIndex() + " of color " + Constants.getColor(s.getColor()) );
                 matchingMachine.addSock(s);
 
             } catch (Exception e) {

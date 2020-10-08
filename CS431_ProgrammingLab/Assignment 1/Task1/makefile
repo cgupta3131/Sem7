@@ -1,5 +1,5 @@
 make:
-	javac SockMatchingRoom.java
+	javac -d . *.java
 
 clean:
-	rm -rf *.class
+	rm -rf sockmatching
