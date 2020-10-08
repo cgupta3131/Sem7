@@ -9,6 +9,7 @@ public class Calc extends JFrame implements KeyListener
     DisplayArea dArea;
     NumberArea nArea;
     FunctionArea fArea;
+    InfoArea iArea;
     NumberScanner nScanner;
     FunctionScanner fScanner;
 
@@ -33,6 +34,9 @@ public class Calc extends JFrame implements KeyListener
 
         fArea = new FunctionArea();
         this.add(fArea.getFunctionPanel());
+
+        iArea = new InfoArea();
+        this.add(iArea.getInfoField());
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);

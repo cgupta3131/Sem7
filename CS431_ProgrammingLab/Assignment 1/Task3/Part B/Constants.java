@@ -1,8 +1,9 @@
 package calc2;
 
-public class Constants {
+public class Constants 
+{
     static final int WIDTH = 400;
-    static final int HEIGHT = 480;
+    static final int HEIGHT = 550;
     static final int PADDING = 15;
     static final int FIELD_HEIGHT = 40;
     static final int SLEEP_TIME = 1000;
@@ -21,4 +22,7 @@ public class Constants {
 
     static final int FUNCTION_FIELD_WIDTH = DISPLAY_FIELD_WIDTH;
     static final int FUNCTION_FIELD_HEIGHT = 2*FIELD_HEIGHT + PADDING;
+
+    static final int INFO_START_LOCATION_X = PADDING;
+    static final int INFO_START_LOCATION_Y = FUNCTION_START_LOCATION_Y + FUNCTION_FIELD_HEIGHT + 2*PADDING;
 }
