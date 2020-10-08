@@ -4,7 +4,6 @@ To compile the program, Execute:
 
 - Before running the program, make sure that ./Resources/tud_info.txt is populated with the Student Data
 - Also if taking input from a file, make sure that ./Resources/input.txt is populated.
-- Also, empty AllData folder should be present
 
 To run the program interactively:
 
