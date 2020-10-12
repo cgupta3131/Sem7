@@ -1,5 +1,3 @@
-package sockmatching;
-
 public class Sock {
 
     private Integer sockIndex;

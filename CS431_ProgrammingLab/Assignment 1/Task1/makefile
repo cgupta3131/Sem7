@@ -2,4 +2,4 @@ make:
 	javac -d . *.java
 
 clean:
-	rm -rf sockmatching
+	rm -rf *.class

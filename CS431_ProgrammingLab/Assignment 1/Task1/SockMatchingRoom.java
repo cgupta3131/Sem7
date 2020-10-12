@@ -1,4 +1,3 @@
-package sockmatching;
 import java.util.*;
 
 class SockMatchingRoom {

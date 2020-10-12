@@ -1,5 +1,3 @@
-package sockmatching;
-
 public class Constants {
     static final int WHITE_SOCK = 1;
     static final int BLACK_SOCK = 2;
