@@ -98,20 +98,30 @@ calculateWaitingTime(ParentOfU, U, V, WaitingTime) :- % Calculates the waiting t
 
 
 % BASE CASE: If no vertex is left, return the remaining set of vertices
-updateParentAndRelaxEdges([], CurSet, _, _, CurSet, ParentList, ParentList). 
+updateParentAndRelaxEdges([], CurSet, _, _, CurSet, ParentList, ParentList, _). 
 
-updateParentAndRelaxEdges([NeighbourV-EdgeWeight|T], CurSet, CurVertex, GlobalWeightOfV, NewCurSet, ParentList, FinalParentList) :- % Updates the weights of the vertices from adjSet and returns newCurSet
+updateParentAndRelaxEdges([NeighbourV-EdgeWeight|T], CurSet, CurVertex, GlobalWeightOfV, NewCurSet, ParentList, FinalParentList, Type) :- % Updates the weights of the vertices from adjSet and returns newCurSet
 	
-	calculateWaitingTime(ParentList.get(CurVertex), CurVertex, NeighbourV, WaitingTime),
-
-	( 
-		removeFromList(CurSet, NeighbourV-GlobalWeightV1, RestCurSet) -> 
-		(GlobalWeightOfV+EdgeWeight+WaitingTime < GlobalWeightV1 -> NewWeight is GlobalWeightOfV+EdgeWeight+WaitingTime, NewParent = ParentList.put(NeighbourV, CurVertex); NewWeight is GlobalWeightV1, NewParent = ParentList);
-		RestCurSet = CurSet, NewWeight is GlobalWeightOfV+EdgeWeight+WaitingTime, NewParent = ParentList.put(NeighbourV, CurVertex)
+	% If weight is of Type time, compute Weighting time and solve according to
+	(
+		Type == 'Time' ->
+		calculateWaitingTime(ParentList.get(CurVertex), CurVertex, NeighbourV, WaitingTime),
+		( 
+			removeFromList(CurSet, NeighbourV-GlobalWeightV1, RestCurSet) -> 
+			(GlobalWeightOfV+EdgeWeight+WaitingTime < GlobalWeightV1 -> NewWeight is GlobalWeightOfV+EdgeWeight+WaitingTime, NewParent = ParentList.put(NeighbourV, CurVertex); NewWeight is GlobalWeightV1, NewParent = ParentList);
+			RestCurSet = CurSet, NewWeight is GlobalWeightOfV+EdgeWeight+WaitingTime, NewParent = ParentList.put(NeighbourV, CurVertex)
+		);
+		%Else procces normally
+		( 
+			removeFromList(CurSet, NeighbourV-GlobalWeightV1, RestCurSet) -> 
+			(GlobalWeightOfV+EdgeWeight < GlobalWeightV1 -> NewWeight is GlobalWeightOfV+EdgeWeight, NewParent = ParentList.put(NeighbourV, CurVertex); NewWeight is GlobalWeightV1, NewParent = ParentList);
+			RestCurSet = CurSet, NewWeight is GlobalWeightOfV+EdgeWeight, NewParent = ParentList.put(NeighbourV, CurVertex)
+		)
 	),
 
+
 	NewCurSet = [NeighbourV-NewWeight|SubNewCurSet],
-	updateParentAndRelaxEdges(T, RestCurSet, CurVertex, GlobalWeightOfV, SubNewCurSet, NewParent, FinalParentList). % Call this function recursively
+	updateParentAndRelaxEdges(T, RestCurSet, CurVertex, GlobalWeightOfV, SubNewCurSet, NewParent, FinalParentList, Type). % Call this function recursively
 
 
 % -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- %
@@ -138,7 +148,7 @@ runDjikstra(CurSet, VisitedSet, Type, MinDist, ParentList, FinalParentList) :-
 	minWeightVertex(CurSet, V-D, RestCurSet), 
 	findAdjacentSet(V, AdjSet, Type),  % Computes all adjacent vertex to vertex V
 	findUpdatedAdjacentSet(AdjSet, VisitedSet, UpdatedAdjSet), % Selects only those vertices which are not visited yet
-	updateParentAndRelaxEdges(UpdatedAdjSet, RestCurSet, V, D, NewCurSet, ParentList, NewParent), % Relaxes the adjacent edges and NewCurSet is the new current set with updated cost
+	updateParentAndRelaxEdges(UpdatedAdjSet, RestCurSet, V, D, NewCurSet, ParentList, NewParent, Type), % Relaxes the adjacent edges and NewCurSet is the new current set with updated cost
 	runDjikstra(NewCurSet, [V-D|VisitedSet], Type, MinDist, NewParent, FinalParentList). % Recursively call Djikstra for remaining vertices
 
 
