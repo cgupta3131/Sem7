@@ -1,4 +1,2 @@
-route('J','M').
-;
-route('A','M').
+route('Chandigarh', 'Delhi').
 ;

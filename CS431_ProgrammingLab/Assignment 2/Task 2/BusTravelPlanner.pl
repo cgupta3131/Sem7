@@ -1,11 +1,11 @@
 /* Bus(Number, Origin, Destination Place, Departure Time, Arrival Time, Distance, Cost) */
-bus(1, 'A', 'J', 14.5, 15, 1, 10).
-bus(2, 'A', 'C', 16, 16.5, 7, 8).
-bus(3, 'J', 'Pan', 16, 16.5, 1, 8).
-bus(4, 'Pan', 'C', 16, 16.5, 2, 8).
-bus(5, 'Pan', 'Pal', 16, 16.5, 7, 8).
-bus(6, 'C', 'M', 16, 16.5, 7, 8).
-bus(7, 'M', 'L', 16, 16.5, 7, 8).
+bus(121, 'Chandigarh', 'Jaipur', 14.5, 15, 120, 10).
+bus(416, 'Chandigarh', 'Delhi', 16, 16.5, 80, 800).
+bus(375, 'Jaipur', 'Agra', 16, 16.5, 200, 12).
+bus(498, 'Agra', 'Delhi', 16, 16.5, 60, 9).
+bus(547, 'Agra', 'Lucknow', 16, 16.5, 30, 8).
+bus(748, 'Delhi', 'Panchkula', 16, 16.5, 90, 5).
+bus(985, 'Panchkula', 'Mohali', 16, 16.5, 30, 13).
 
 
 route(SourceVertex, DestVertex) :- % Our main calling function, calculates the minimum distance, time and cost between SourceVertex and DestVertex
