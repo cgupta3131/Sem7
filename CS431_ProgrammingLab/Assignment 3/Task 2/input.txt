@@ -1,0 +1,11 @@
+fixture "all"
+fixture "ST"
+nextMatch 1 8.50
+nextMatch 1 19.50
+nextMatch 3 19.50
+nextMatch 32 19.50
+nextMatch 3 49.50
+
+
+
+
