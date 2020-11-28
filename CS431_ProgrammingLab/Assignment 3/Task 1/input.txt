@@ -1,0 +1,10 @@
+isEmpty []
+isEmpty [1,2,3]
+
+findUnionLists [1,2,3,4] [3,4,5,6]
+
+findIntersectionLists [1,2,3,4] [3,4,5,6]
+
+findSubtractionLists [1,2,3,4] [3,4,5,6]
+
+findAdditionLists [1,2] [3,4]
